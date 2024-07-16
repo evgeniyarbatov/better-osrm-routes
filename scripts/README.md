@@ -18,8 +18,14 @@ Make maps of all GPX routes:
 python make-maps.py
 ```
 
-Run `docker compose up` to launch OSRM and get nodes:
+Run docker compose to launch OSRM and get nodes:
 
 ```
 python get-nodes.py
+```
+
+Create OSM map based on the nodes from the previous step:
+
+```
+python create-osm.py
 ```
