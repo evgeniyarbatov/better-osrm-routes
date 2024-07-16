@@ -20,11 +20,13 @@ def make_map(df, filename):
   plt.savefig(filename, bbox_inches='tight', pad_inches=0)
 
 gpx_files = glob.glob(
-  os.path.join('../gpx/', '*.gpx')
+  os.path.join('../gpx/raw/', '*.gpx')
 )
-for gpx_file in gpx_files:
+for gpx_file in gpx_files:  
+  output_path = get_output_path('../gpx/maps/', gpx_file, 'png')
+  
+  if os.path.exists(output_path):
+    continue
+  
   df = parse_gpx(gpx_file)
-  
-  map_path = get_output_path('../gpx/maps/', gpx_file, 'png')
-  
-  make_map(df, map_path)
+  make_map(df, output_path)

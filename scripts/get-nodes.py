@@ -45,10 +45,13 @@ def query_osrm(df):
   return pd.concat(results).reset_index(drop=True)   
 
 gpx_files = glob.glob(
-  os.path.join('../gpx/', '*.gpx')
+  os.path.join('../gpx/raw/', '*.gpx')
 )
 for gpx_file in gpx_files:
   output_path = get_output_path('../gpx/nodes/', gpx_file, 'csv')
+  
+  if os.path.exists(output_path):
+    continue
   
   df = parse_gpx(gpx_file)
   
