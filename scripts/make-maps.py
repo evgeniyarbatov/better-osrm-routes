@@ -6,10 +6,6 @@ import contextily as ctx
 
 from utils import parse_gpx, get_output_path
 
-def get_map_path(output_dir, filename):
-  map_filename = os.path.splitext(os.path.basename(filename))[0] + '.png'
-  return output_dir + '/' + map_filename
-
 def make_map(df, filename):
   plt.figure(figsize=(15, 8))
   

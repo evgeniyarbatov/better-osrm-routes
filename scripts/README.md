@@ -17,3 +17,9 @@ Make maps of all GPX routes:
 ```
 python make-maps.py
 ```
+
+Run `docker compose up` to launch OSRM and get nodes:
+
+```
+python get-nodes.py
+```
