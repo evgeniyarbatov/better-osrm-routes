@@ -19,7 +19,7 @@ def get_nodes(df, filename):
           row['node_lat'],
           row['node_lon'],
           filename,
-          row['nodes'][0], # Get first node ID only
+          row['nodes'],
         )]
         df = pd.DataFrame(info, columns=[
           'lat', 
@@ -38,23 +38,6 @@ def create_osm(df, osm_file):
     osm.set("copyright", "OpenStreetMap and contributors")
     osm.set("attribution", "http://www.openstreetmap.org/copyright")
     osm.set("license", "http://opendatacommons.org/licenses/odbl/1-0/")
-
-    nodes_df = df\
-    .drop_duplicates(subset=['node_id'])\
-    .sort_values(by='node_id')
-
-    for _, row in nodes_df.iterrows():
-        node_id = row["node_id"]
-
-        ET.SubElement(
-            osm,
-            "node",
-            id=str(node_id),
-            lat=str(row["lat"]),
-            lon=str(row["lon"]),
-            visible="true",
-            version="1",        
-        )
 
     tags = [
         {"k": "highway", "v": "footway"},
@@ -107,7 +90,13 @@ for csv_file in csv_files:
   filename = get_filename(csv_file)
   
   df = pd.read_csv(csv_file)
+  
+  # Remove matched nodes that are too far
+  df = df[df['distance'] <= 10]
+  
+  # Split nodes into separate rows
   df['nodes'] = df['nodes'].apply(ast.literal_eval)
+  df = df.explode('nodes').reset_index(drop=True)
   
   node_df = get_nodes(df, filename)
   node_dfs.append(node_df)
