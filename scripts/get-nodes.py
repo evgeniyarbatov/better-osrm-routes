@@ -42,8 +42,8 @@ gpx_files = glob.glob(
 for gpx_file in gpx_files:
   output_path = get_output_path('gpx/nodes/', gpx_file, 'csv')
   
-  # if os.path.exists(output_path):
-  #   continue
+  if os.path.exists(output_path):
+    continue
   
   df = parse_gpx(gpx_file)
   
