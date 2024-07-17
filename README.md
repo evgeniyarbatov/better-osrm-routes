@@ -15,9 +15,17 @@ Follow `scripts` to convert GPX to OSM ways.
 Merge OSM based on GPX files and public OSM:
 
 ```
-osmosis \
---read-pbf file="osm/hanoi.osm.pbf" \
---read-xml file="gpx/osm/custom.osm" \
---merge \
---write-pbf file="custom_osm/hanoi_with_gpx.osm.pbf"
+osmium merge \
+--overwrite \
+osm/hanoi.osm.pbf \
+gpx/osm/custom.osm \
+-o custom_osm/hanoi_with_gpx.osm.pbf
+```
+
+Check the merged OSM is as expected:
+
+```
+osmium cat \
+custom_osm/hanoi_with_gpx.osm.pbf \
+-o custom_osm/hanoi_with_gpx.osm
 ```
