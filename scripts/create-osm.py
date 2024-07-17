@@ -11,26 +11,6 @@ import xml.dom.minidom as minidom
 def get_filename(filename):
  return os.path.splitext(os.path.basename(filename))[0]
 
-def get_nodes(df, filename):
-    results = []
-    
-    for _, row in df.iterrows():
-        info = [(
-          row['node_lat'],
-          row['node_lon'],
-          filename,
-          row['nodes'],
-        )]
-        df = pd.DataFrame(info, columns=[
-          'lat', 
-          'lon', 
-          'filename',
-          'node_id',
-        ])
-        results.append(df)
-
-    return pd.concat(results).reset_index(drop=True)   
-
 def create_osm(df, osm_file):
     osm = ET.Element("osm")
     osm.set("version", "0.6")
@@ -90,18 +70,20 @@ for csv_file in csv_files:
   filename = get_filename(csv_file)
   
   df = pd.read_csv(csv_file)
+  df['filename'] = filename
   
   # Remove matched nodes that are too far
   df = df[df['distance'] <= 10]
   
-  # Split nodes into separate rows
   df['nodes'] = df['nodes'].apply(ast.literal_eval)
-  df = df.explode('nodes').reset_index(drop=True)
   
-  node_df = get_nodes(df, filename)
-  node_dfs.append(node_df)
+  # Split nodes into separate rows
+  df = df.explode('nodes').reset_index(drop=True)
+  df = df.rename(columns={'nodes': 'node_id'})
+  
+  node_dfs.append(df[['node_id', 'filename']])
 
-all_node_dfs = pd.concat(node_dfs).reset_index(drop=True)  
+all_node_dfs = pd.concat(node_dfs).reset_index(drop=True)
 
 create_osm(
   all_node_dfs,
