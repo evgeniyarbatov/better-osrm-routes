@@ -8,7 +8,10 @@ Handlers = require("lib/way_handlers")
 find_access_tag = require("lib/access").find_access_tag
 
 function setup()
-  local walking_speed = 5
+  custom_route_bonus                = 10  -- Bonus factor for GPX route paths
+
+  walking_speed                     = 5
+
   return {
     properties = {
       weight_name                   = 'duration',
@@ -90,7 +93,6 @@ function setup()
         path            = walking_speed,
         steps           = walking_speed,
         pedestrian      = walking_speed,
-        platform        = walking_speed,
         footway         = walking_speed,
         pier            = walking_speed,
       },
@@ -164,6 +166,23 @@ function process_node(profile, node, result)
   end
 end
 
+function handle_custom_routes(profile, way, result, data)
+  -- Prefer ways with 'Custom GPX Route' in the name
+  local name = way:get_value_by_key('name')
+  if name == 'Custom GPX Route' then
+    result.forward_speed = walking_speed * custom_route_bonus
+    result.backward_speed = walking_speed * custom_route_bonus
+  end
+
+  -- Default handling for other ways
+  if result.forward_speed == 0 then
+    result.forward_speed = walking_speed
+  end
+  if result.backward_speed == 0 then
+      result.backward_speed = walking_speed
+  end
+end
+
 -- main entry point for processsing a way
 function process_way(profile, way, result)
   -- the intial filtering of ways based on presence of tags
@@ -207,11 +226,11 @@ function process_way(profile, way, result)
     -- check various tags that could indicate that the way is not
     -- routable. this includes things like status=impassable,
     -- toll=yes and oneway=reversible
-    WayHandlers.blocked_ways,
+    -- WayHandlers.blocked_ways,
 
     -- determine access status by checking our hierarchy of
     -- access tags, e.g: motorcar, motor_vehicle, vehicle
-    WayHandlers.access,
+    -- WayHandlers.access,
 
     -- check whether forward/backward directons are routable
     WayHandlers.oneway,
@@ -238,7 +257,9 @@ function process_way(profile, way, result)
     WayHandlers.names,
 
     -- set weight properties of the way
-    WayHandlers.weights
+    WayHandlers.weights,
+
+    handle_custom_routes
   }
 
   WayHandlers.run(profile, way, result, data, handlers)

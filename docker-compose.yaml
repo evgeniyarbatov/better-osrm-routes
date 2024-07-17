@@ -37,7 +37,7 @@ services:
     restart: unless-stopped
     command: >
       bash -c "
-      osrm-extract -p /profiles/foot.lua /data/hanoi_with_gpx.osm.pbf && 
+      osrm-extract -p /profiles/custom.lua /data/hanoi_with_gpx.osm.pbf && 
       osrm-partition /data/hanoi_with_gpx.osrm && 
       osrm-customize /data/hanoi_with_gpx.osrm && 
       osrm-routed \
