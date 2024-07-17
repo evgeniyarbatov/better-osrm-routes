@@ -9,8 +9,9 @@ find_access_tag = require("lib/access").find_access_tag
 
 function setup()
   custom_route_bonus                = 10  -- Bonus factor for GPX route paths
+  designated_foot_bonus             = 10  -- Bonus for <tag k="foot" v="designated"/>
 
-  local walking_speed               = 5
+  walking_speed                     = 5
 
   return {
     properties = {
@@ -166,12 +167,19 @@ function process_node(profile, node, result)
   end
 end
 
-function handle_custom_routes(profile ,way, result, data)
+function handle_custom_routes(profile, way, result, data)
   -- Prefer ways with 'Custom GPX Route' in the name
   local name = way:get_value_by_key('name')
-  if name and name:find('Custom GPX Route') then
+  if name == 'Custom GPX Route' then
     result.forward_speed = walking_speed * custom_route_bonus
     result.backward_speed = walking_speed * custom_route_bonus
+  end
+
+  -- Prefer ways with '<tag k="foot" v="designated"/>' tag
+  local foot_designated = way:get_value_by_key("foot")
+  if foot_designated == "designated" then
+    result.forward_speed = walking_speed * designated_foot_bonus
+    result.backward_speed = walking_speed * designated_foot_bonus
   end
 
   -- Default handling for other ways

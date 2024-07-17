@@ -20,6 +20,7 @@ def create_osm(df, osm_file):
 
     tags = [
         {"k": "highway", "v": "footway"},
+        {"k": "foot", "v": "designated"},
     ]
 
     ways_df = df.groupby('filename')['node_id'].agg(lambda x: list(x.unique())).reset_index()

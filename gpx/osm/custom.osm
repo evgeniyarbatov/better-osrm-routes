@@ -441,6 +441,7 @@
     <nd ref="11832076990"/>
     <nd ref="75617755"/>
     <tag k="highway" v="footway"/>
+    <tag k="foot" v="designated"/>
   </way>
   <way id="2" visible="true" version="1">
     <tag k="name" v="Custom GPX Route"/>
@@ -974,6 +975,7 @@
     <nd ref="4024904903"/>
     <nd ref="1497971577"/>
     <tag k="highway" v="footway"/>
+    <tag k="foot" v="designated"/>
   </way>
   <way id="3" visible="true" version="1">
     <tag k="name" v="Custom GPX Route"/>
@@ -1428,6 +1430,7 @@
     <nd ref="10282179354"/>
     <nd ref="10282179351"/>
     <tag k="highway" v="footway"/>
+    <tag k="foot" v="designated"/>
   </way>
   <way id="4" visible="true" version="1">
     <tag k="name" v="Custom GPX Route"/>
@@ -1753,6 +1756,7 @@
     <nd ref="11433601786"/>
     <nd ref="103011356"/>
     <tag k="highway" v="footway"/>
+    <tag k="foot" v="designated"/>
   </way>
   <way id="5" visible="true" version="1">
     <tag k="name" v="Custom GPX Route"/>
@@ -2159,6 +2163,7 @@
     <nd ref="1905193224"/>
     <nd ref="6638723192"/>
     <tag k="highway" v="footway"/>
+    <tag k="foot" v="designated"/>
   </way>
   <way id="6" visible="true" version="1">
     <tag k="name" v="Custom GPX Route"/>
@@ -2366,6 +2371,7 @@
     <nd ref="8184606187"/>
     <nd ref="5857305437"/>
     <tag k="highway" v="footway"/>
+    <tag k="foot" v="designated"/>
   </way>
   <way id="7" visible="true" version="1">
     <tag k="name" v="Custom GPX Route"/>
@@ -2586,6 +2592,7 @@
     <nd ref="7496286388"/>
     <nd ref="11099792652"/>
     <tag k="highway" v="footway"/>
+    <tag k="foot" v="designated"/>
   </way>
   <way id="8" visible="true" version="1">
     <tag k="name" v="Custom GPX Route"/>
@@ -3032,5 +3039,6 @@
     <nd ref="1893251847"/>
     <nd ref="283136849"/>
     <tag k="highway" v="footway"/>
+    <tag k="foot" v="designated"/>
   </way>
 </osm>
