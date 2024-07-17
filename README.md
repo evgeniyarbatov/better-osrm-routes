@@ -25,6 +25,7 @@ Check the merged OSM is as expected:
 
 ```
 osmium cat \
+--overwrite \
 custom_osm/hanoi_with_gpx.osm.pbf \
 -o custom_osm/hanoi_with_gpx.osm
 ```
