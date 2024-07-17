@@ -2,17 +2,16 @@
 
 Improve OSRM routes with GPX files.
 
-## Get GPX Files
+## How to use
 
-You can get your own GPX files from [Garmin Connect](https://connect.garmin.com/modern/courses) or running events. You can also create your own GPX based on heatmap on Strava.
+- add GPX files to `gpx/raw`
+- create maps of GPX files with `python scripts/make-maps.py`
+- get OSM nodes inside GPX files `python scripts/get-nodes.py`
+- create OSM file based on OSM nodes `python scripts/create-osm.py`
 
-## Convert GPX to OSM Ways
+## Merge GPX OSM with public OSM
 
-Follow `scripts` to convert GPX to OSM ways.
-
-## Merge OSM Maps
-
-Merge OSM based on GPX files and public OSM:
+Use:
 
 ```
 osmium merge \
@@ -29,3 +28,8 @@ osmium cat \
 custom_osm/hanoi_with_gpx.osm.pbf \
 -o custom_osm/hanoi_with_gpx.osm
 ```
+
+## Where to find GPX files?
+
+You can get your own GPX files from [Garmin Connect](https://connect.garmin.com/modern/courses) or running events. You can also create your own GPX based on heatmap on Strava.
+

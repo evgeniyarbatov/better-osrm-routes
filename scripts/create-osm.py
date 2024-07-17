@@ -63,7 +63,7 @@ def create_osm(df, osm_file):
 node_dfs = []
 
 csv_files = glob.glob(
-  os.path.join('../gpx/nodes/', '*.csv')
+  os.path.join('gpx/nodes/', '*.csv')
 )
 for csv_file in csv_files:
   filename = get_filename(csv_file)
@@ -86,5 +86,5 @@ all_node_dfs = pd.concat(node_dfs).reset_index(drop=True)
 
 create_osm(
   all_node_dfs,
-  '../gpx/osm/custom.osm',
+  'gpx/osm/custom.osm',
 )
