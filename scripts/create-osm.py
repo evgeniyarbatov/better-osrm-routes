@@ -2,6 +2,8 @@ import os
 import glob
 import ast
 
+from datetime import datetime
+
 import pandas as pd
 
 import xml.etree.ElementTree as ET
@@ -23,6 +25,9 @@ def create_osm(df, osm_file):
         {"k": "foot", "v": "designated"},
     ]
 
+    current_time = datetime.now()
+    timestamp = current_time.strftime('%Y-%m-%dT%H:%M:%SZ')
+
     ways_df = df.groupby('filename')['node_id'].agg(lambda x: list(x.unique())).reset_index()
     
     for idx, row in ways_df.iterrows():
@@ -34,6 +39,7 @@ def create_osm(df, osm_file):
             id=str(way_id),
             visible="true",
             version="1",
+            timestamp=timestamp,
         )
 
         ET.SubElement(

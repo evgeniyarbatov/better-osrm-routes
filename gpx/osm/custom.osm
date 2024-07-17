@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <osm version="0.6" generator="CGImap 0.9.2 (596732 spike-08.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
-  <way id="1" visible="true" version="1">
+  <way id="1" visible="true" version="1" timestamp="2024-07-17T14:17:58Z">
     <tag k="name" v="Custom GPX Route"/>
     <nd ref="6644523700"/>
     <nd ref="309601293"/>
@@ -443,7 +443,7 @@
     <tag k="highway" v="footway"/>
     <tag k="foot" v="designated"/>
   </way>
-  <way id="2" visible="true" version="1">
+  <way id="2" visible="true" version="1" timestamp="2024-07-17T14:17:58Z">
     <tag k="name" v="Custom GPX Route"/>
     <nd ref="10137277666"/>
     <nd ref="98015709"/>
@@ -977,7 +977,7 @@
     <tag k="highway" v="footway"/>
     <tag k="foot" v="designated"/>
   </way>
-  <way id="3" visible="true" version="1">
+  <way id="3" visible="true" version="1" timestamp="2024-07-17T14:17:58Z">
     <tag k="name" v="Custom GPX Route"/>
     <nd ref="8184177158"/>
     <nd ref="8173724101"/>
@@ -1432,7 +1432,7 @@
     <tag k="highway" v="footway"/>
     <tag k="foot" v="designated"/>
   </way>
-  <way id="4" visible="true" version="1">
+  <way id="4" visible="true" version="1" timestamp="2024-07-17T14:17:58Z">
     <tag k="name" v="Custom GPX Route"/>
     <nd ref="2326695566"/>
     <nd ref="6641469031"/>
@@ -1758,7 +1758,7 @@
     <tag k="highway" v="footway"/>
     <tag k="foot" v="designated"/>
   </way>
-  <way id="5" visible="true" version="1">
+  <way id="5" visible="true" version="1" timestamp="2024-07-17T14:17:58Z">
     <tag k="name" v="Custom GPX Route"/>
     <nd ref="110375567"/>
     <nd ref="110375566"/>
@@ -2165,7 +2165,7 @@
     <tag k="highway" v="footway"/>
     <tag k="foot" v="designated"/>
   </way>
-  <way id="6" visible="true" version="1">
+  <way id="6" visible="true" version="1" timestamp="2024-07-17T14:17:58Z">
     <tag k="name" v="Custom GPX Route"/>
     <nd ref="6646847594"/>
     <nd ref="75617751"/>
@@ -2373,7 +2373,7 @@
     <tag k="highway" v="footway"/>
     <tag k="foot" v="designated"/>
   </way>
-  <way id="7" visible="true" version="1">
+  <way id="7" visible="true" version="1" timestamp="2024-07-17T14:17:58Z">
     <tag k="name" v="Custom GPX Route"/>
     <nd ref="9907061276"/>
     <nd ref="9907061275"/>
@@ -2594,7 +2594,7 @@
     <tag k="highway" v="footway"/>
     <tag k="foot" v="designated"/>
   </way>
-  <way id="8" visible="true" version="1">
+  <way id="8" visible="true" version="1" timestamp="2024-07-17T14:17:58Z">
     <tag k="name" v="Custom GPX Route"/>
     <nd ref="9907061237"/>
     <nd ref="444222627"/>

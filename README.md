@@ -14,11 +14,11 @@ Improve OSRM routes with GPX files.
 Use:
 
 ```
-osmium merge \
---overwrite \
-osm/hanoi.osm.pbf \
-gpx/osm/custom.osm \
--o custom_osm/hanoi_with_gpx.osm.pbf
+osmosis \
+--read-pbf file="osm/hanoi.osm.pbf" \
+--read-xml file="gpx/osm/custom.osm" \
+--merge \
+--write-pbf file="custom_osm/hanoi_with_gpx.osm.pbf"
 ```
 
 Check the merged OSM is as expected:
